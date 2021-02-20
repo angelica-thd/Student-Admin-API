@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20210220113452) do
     t.string "name"
     t.string "id_number"
     t.string "university"
-    t.string "departement"
+    t.string "department"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
