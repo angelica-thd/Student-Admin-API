@@ -17,6 +17,7 @@ For the needs of my course of SaaS the main user is an "admin" and the secondary
 
 * How to run the test suites: on the project's directory run `bundle exec rspec` or to individually run a test suite `bundle exec rspec spec/{dir_of_tests_name} -fd`
 
+
 * Services: 
   * This app has a two-factor user authentication (email-password) for all users and provides an authentication token on each session for each user
     The user can use the token for each request like so: `{port}/{request_path} {request_attrivutes} Authorization:{auth_token}`
