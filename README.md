@@ -5,16 +5,17 @@ For the needs of my course of SaaS the main user is an "admin" and the secondary
 
 
 * Ruby version: ruby 2.3.3p222 (2016-11-21 revision 56859) [i386-mingw32] 
-  Rails version: Rails 5.1.7
+* Rails version: Rails 5.1.7
 
 * For testing: 'rspec' gem, httpie 
 * For user authentication token generation: 'jwt' gem
 * For user password encryption: 'bcrypt' gem (~> 3.1.7)
 
-* Database creation
-
-* Database initialization
-
+* Database used: Postgres, 'pg' gem
+* Database schema: 
+  1. users -> id,email,password_digest,name,username
+  2. students -> id, name, id_number, university, department, user_id
+  
 * How to run the test suites: on the project's directory run `bundle exec rspec` or to individually run a test suite `bundle exec rspec spec/{dir_of_tests_name} -fd`
 
 
