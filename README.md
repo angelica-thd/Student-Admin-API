@@ -20,8 +20,9 @@ For the needs of my course of SaaS the main user is an "admin" and the secondary
 
 * Services: 
   * This app has a two-factor user authentication (email-password) for all users and provides an authentication token on each session for each user
-    The user can use the token for each request like so: `{port}/{request_path} {request_attrivutes} Authorization:{auth_token}`
-      httpie exampple: `httpie :3000/find/student email=test@example.com Authorization:eyh...fJKH`
+    The user can use the token for each request like so: 
+    `{port}/{request_path} {request_attrivutes} Authorization:{auth_token}`
+    httpie exampple: `httpie :3000/find/student email=test@example.com Authorization:eyh...fJKH`
   * API /route endpoints: 
   1.  post 'auth/login' -> User login 
   2.  get 'auth/logout' -> User logout
