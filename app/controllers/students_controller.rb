@@ -49,7 +49,7 @@ class StudentsController < ApplicationController
       :name,
       :id_number,
       :university,
-      :dept
+      :department
     )
   end
 end

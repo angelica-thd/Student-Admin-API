@@ -3,7 +3,7 @@ FactoryBot.define do
     name { Faker::Name.name }
     id_number  'p12345'
     university 'University of Piraeus'
-    dept 'Computer Science'
+    department 'Computer Science'
     user_id nil
   end
 end
