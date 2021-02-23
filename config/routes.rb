@@ -5,5 +5,9 @@ Rails.application.routes.draw do
   get 'me', to: 'users#me'
   put 'update', to: 'users#update'
   delete 'delete', to: 'users#destroy'
+  post 'signup/student', to: 'students#create'
+  post 'find/student', to: 'students#show'
+  put 'update/student', to: 'students#update'
+  delete 'delete/student', to: 'students#destroy'
 
 end

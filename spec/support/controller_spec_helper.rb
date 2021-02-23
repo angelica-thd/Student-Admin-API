@@ -17,6 +17,12 @@ module ControllerSpecHelper
     }
   end
 
+  def valid_headers_auth_only
+    {
+      "Authorization" => token_generator(user.id)
+    }
+  end
+
   # return invalid headers
   def invalid_headers
     {

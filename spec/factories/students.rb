@@ -1,8 +1,9 @@
 FactoryBot.define do
   factory :student do
     name { Faker::Name.name }
-    id_number { Faker::Internet.username(specifier: 5)  }
+    id_number  'p12345'
     university 'University of Piraeus'
-    department 'Computer Science'
+    dept 'Computer Science'
+    user_id nil
   end
 end

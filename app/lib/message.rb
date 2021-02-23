@@ -45,6 +45,9 @@ class Message
   def self.simple_update
     'User updated successfully.'
   end
+  def self.student_found
+    'Student found.'
+  end
 
   def self.student_update
     'Student updated successfully.'
