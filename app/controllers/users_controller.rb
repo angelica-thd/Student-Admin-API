@@ -15,20 +15,20 @@ class UsersController < ApplicationController
 
   def update
     @current_user.update(user_params)
-    response = {message: Message.simple_update,new_credentials: @current_user }
+    response = {message: Message.basic_update,new_credentials: @current_user }
     json_response(response)
   end
 
   def destroy
     @current_user.destroy
-    json_response(message: Message.simple_destroy)
+    json_response(message: Message.basic_destroys)
   end
 
   def me
     if @current_user.students!=[]
       response = {user: Message.student,credentials: @current_user, student_info: @current_user.students.first}
     else
-      response = {user: Message.simple, credentials: @current_user}
+      response = {user: Message.basic, credentials: @current_user}
     end
     json_response(response)
   end

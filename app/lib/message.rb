@@ -31,8 +31,8 @@ class Message
     'Account could not be created'
   end
 
-  def self.simple
-    'Simple user'
+  def self.basic
+    'Basic user'
   end
   def self.student
     'Student user'
@@ -42,7 +42,7 @@ class Message
     'Logged out successfully.'
   end
 
-  def self.simple_update
+  def self.basic_update
     'User updated successfully.'
   end
   def self.student_found
@@ -53,7 +53,7 @@ class Message
     'Student updated successfully.'
   end
 
-  def self.simple_destroy
+  def self.basic_destroy
     'User deleted successfully.'
   end
 
