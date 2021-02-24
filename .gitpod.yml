@@ -1,0 +1,19 @@
+image:
+  file: .gitpod.Dockerfile
+
+ports:
+  # Rails server
+  - port: 3000
+    onOpen: open-preview
+  # PostgreSQL server
+  - port: 5432
+    onOpen: ignore
+
+tasks:
+  - before:
+      mkdir -p tmp/pids
+    init: >
+      bundle install && rails credentials:edit &&
+      rake db:create && rake db:migrate
+    command: >
+      puma -C config/puma.rb
