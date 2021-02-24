@@ -1,7 +1,7 @@
 FROM gitpod/workspace-postgres
 USER gitpod
 
-ENV POSTGRES_DB='todo'
+ENV POSTGRES_DB='student-admin-api_development'
 ENV RAILS_ENV='production'
 ENV RACK_ENV='production'
 
