@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def destroy
     @current_user.destroy
-    json_response(message: Message.basic_destroys)
+    json_response(message: Message.basic_destroy)
   end
 
   def me

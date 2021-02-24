@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'Students API', type: :request do
   let(:user) {create(:user)}
+  let(:admin) {create(:user)}
   let(:student) { create(:student,id_number: 'p12345',user_id: user.id) }
-  let(:user_email) {user.email}
   let(:user_id) {user.id}
+  let(:admin_id) {admin.id}
   let(:valid_attributes) do
     attributes_for(:student)
   end
@@ -40,9 +41,9 @@ RSpec.describe 'Students API', type: :request do
 
   # find student test suite
   describe 'POST /find/student' do
-    let(:headers) {valid_headers_auth_only}
-    let(:valid_attributes) { { email: user_email } }
-    let(:invalid_attributes) { { email: 'admin@mail.com' } }
+    let(:headers) {{ "Authorization" => token_generator(admin_id) }}
+    let(:valid_attributes) { { id_number: student.id_number } }
+    let(:invalid_attributes) { { id_number: 'randomID' } }
     context 'when valid request' do
       before { post '/find/student', params: valid_attributes, headers: headers }
 
@@ -78,7 +79,7 @@ RSpec.describe 'Students API', type: :request do
 
       it 'returns failure message' do
         expect(json['message'])
-          .to match("Couldn't find User")
+          .to match("Couldn't find Student")
       end
     end
   end
