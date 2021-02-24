@@ -13,7 +13,7 @@ class StudentsController < ApplicationController
     if @current_user.students!=[]
       response = {message: Message.unauthorized}
     else
-      student = User.find_by!(email: params[:email]).students.first
+      student = Student.find_by!(id_number: params[:id_number])
       response = {message:Message.student_found, student: student}
     end
     json_response(response)

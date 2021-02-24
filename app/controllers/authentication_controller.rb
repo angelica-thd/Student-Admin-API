@@ -11,10 +11,10 @@ class AuthenticationController < ApplicationController
     auth_token = user_auth.call
 
     if user_auth.check_student != "student"
-      response = {message: Message.simple,user: auth_params[:email], auth_token: auth_token}
+      response = {message: Message.basic,user: auth_params[:email], auth_token: auth_token}
 
     else
-      response = {message: Message.student, user: auth_params[:email], auth_token: auth_token, student: user_auth.call_student }
+      response = {message: Message.student, user: auth_params[:email], auth_token: auth_token }
 
     end
     json_response(response)
