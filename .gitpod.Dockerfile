@@ -4,7 +4,7 @@ USER gitpod
 ENV POSTGRES_DB='student-admin-api_development'
 ENV RAILS_ENV='production'
 ENV RACK_ENV='production'
-RUN rvm install "ruby-2.6.6"
+
 # Install the Ruby version specified in '.ruby-version'
 COPY --chown=gitpod:gitpod .ruby-version /tmp
 RUN echo "rvm_gems_path=/home/gitpod/.rvm" > ~/.rvmrc
