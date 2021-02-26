@@ -4,7 +4,7 @@ An API-only REST-ful application of a 2 type user: main user - secondary user, i
 For the needs of my course of SaaS the main user is an "admin" and the secondary user is a "student".
 
 
-* Ruby version: ruby 2.3.3p222 (2016-11-21 revision 56859) [i386-mingw32] 
+* Ruby version: ruby 2.3.3p222 (2016-11-21 revision 56859) 
 * Rails version: Rails 5.1.7
 
 * For testing: 'rspec' gem, httpie 
