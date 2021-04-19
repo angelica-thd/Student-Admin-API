@@ -11,13 +11,15 @@ class UsersController < ApplicationController
 
     if userbyemail || userbyusername
       response = {user: Message.user_exist}
+      status = 422
     else
       user = User.create!(user_params)  #create! in case of an error  the exception will be handled instead of failing and returning 'false'
       auth_token = AuthenticateUser.new(user.email, user.password).call
       response = { message: Message.account_created, auth_token: auth_token }
+      status = :created
 
     end
-    json_response(response, :created)
+    json_response(response, status)
   end
 
 
