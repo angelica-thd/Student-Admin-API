@@ -6,9 +6,17 @@ class UsersController < ApplicationController
 
   # return authenticated token upon signup
   def create
-    user = User.create!(user_params)  #create! in case of an error  the exception will be handled instead of failing and returning 'false'
-    auth_token = AuthenticateUser.new(user.email, user.password).call
-    response = { message: Message.account_created, auth_token: auth_token }
+    userbyemail = User.where(email: params[:email]).exists?
+    userbyusername = User.where(username: params[:username]).exists?
+
+    if userbyemail || userbyusername
+      response = {user: Message.user_exist}
+    else
+      user = User.create!(user_params)  #create! in case of an error  the exception will be handled instead of failing and returning 'false'
+      auth_token = AuthenticateUser.new(user.email, user.password).call
+      response = { message: Message.account_created, auth_token: auth_token }
+
+    end
     json_response(response, :created)
   end
 

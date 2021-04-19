@@ -64,4 +64,7 @@ class Message
   def self.expired_token
     'Sorry, your token has expired. Please login to continue.'
   end
+  def self.user_exist
+    'Sorry, a user with this email or username already exists. Please,user different ones.'
+  end
 end
