@@ -13,7 +13,7 @@ tasks:
   - before:
       mkdir -p tmp/pids
     init: >
-      bundle install && EDITOR=" --wait" rails credentials:edit &&
-      rake db:create && rake db:migrate
+      bundle install &&
+      rake db:create && rake db:migrate && rails s
     command: >
       puma -C config/puma.rb
