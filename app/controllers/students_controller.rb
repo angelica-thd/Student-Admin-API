@@ -13,7 +13,7 @@ class StudentsController < ApplicationController
     if @current_user.students!=[]
       response = {message: Message.unauthorized}
     else
-      student = Student.find_by!(id_number: params[:id_number])
+      student = Student.find_by!(studentNumber: params[:studentNumber])
       response = {message:Message.student_found, student: student}
     end
     json_response(response)
@@ -46,10 +46,24 @@ class StudentsController < ApplicationController
 
   def student_params
     params.permit(
-      :name,
-      :id_number,
-      :university,
-      :department
+      :greekFname,
+      :greekFname,
+      :latinFname,
+      :latinLname,
+      :address,
+      :zipCode,
+      :city,
+      :prefecture,
+      :institution,
+      :school,
+      :department,
+      :academicAddress,
+      :academicCity,
+      :academicPrefecture,
+      :academicZipCode,
+      :studentshipType,
+      :studentNumber,
+      :studentAMKA,
     )
   end
 end
