@@ -47,7 +47,7 @@ class StudentsController < ApplicationController
   def student_params
     params.permit(
       :greekFname,
-      :greekFname,
+      :greekLname,
       :latinFname,
       :latinLname,
       :address,
