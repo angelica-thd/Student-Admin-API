@@ -10,19 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210220200111) do
+ActiveRecord::Schema.define(version: 20210509090051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "students", force: :cascade do |t|
-    t.text "name"
-    t.text "id_number"
-    t.text "university"
+    t.text "greekFname"
+    t.text "studentNumber"
+    t.text "institution"
     t.text "department"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "greekLname"
+    t.string "latinFname"
+    t.string "latinLname"
+    t.string "address"
+    t.string "zipCode"
+    t.string "city"
+    t.string "prefecture"
+    t.string "school"
+    t.string "academicAddress"
+    t.string "academicZipCode"
+    t.string "academicPrefecture"
+    t.string "academicCity"
+    t.string "studentshipType"
+    t.string "studentAMKA"
+    t.string "entryDate"
     t.index ["user_id"], name: "index_students_on_user_id"
   end
 

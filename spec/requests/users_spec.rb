@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Users API', type: :request do
   let(:user) { create(:user) }
-
+  let(:existing_user) {User.first}
 
   #let(:auth_token) { AuthenticateUser.new(user.email, user.password).call }
 
@@ -11,7 +11,8 @@ RSpec.describe 'Users API', type: :request do
   describe 'POST /signup' do
     let(:valid_attributes) do
       attributes_for(:user, password_confirmation: user.password)
-    end
+    end  
+
     context 'when valid request' do
       before { post '/signup', params: valid_attributes.to_json, headers: valid_headers.except('Authorization') }
 
@@ -28,6 +29,7 @@ RSpec.describe 'Users API', type: :request do
       end
     end
 
+
     context 'when invalid request' do
       before { post '/signup', params: {}, headers: headers }
 
@@ -40,6 +42,18 @@ RSpec.describe 'Users API', type: :request do
           .to match(/Validation failed: Password can't be blank, Name can't be blank, Username can't be blank, Email can't be blank, Password digest can't be blank/)
       end
     end
+
+
+    context 'when user already exists' do
+      before (post '/signup', params: attributes_for(: User.first, password_confirmation: User.first.password).to_json, headers: headers)
+      it 'does not create a new user' do
+        except(response).to have_http_status(422)
+      end
+      it 'returns failure message, user already exists' do
+        except(json['user'])
+        .to match(/Sorry, a user with this email or username already exists. Please,user different ones./)
+      end 
+    end 
   end
 
 
