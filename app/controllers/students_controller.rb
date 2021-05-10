@@ -1,7 +1,9 @@
 class StudentsController < ApplicationController
   def create
-    if @current_user.students !=[] #if user already has a student -> if student is already a user in our app
+    if @current_user.students !=[]   #if user already has a student -> if student is already a user in our app
       response = { message: Message.unauthorized }
+    elsif Student.where(studentNumber: params[:studentNumber]).exists? 
+      response = { message: Message.student_exists}
     else
       @student = @current_user.students.create!(student_params)
       response = { message: Message.student_created}

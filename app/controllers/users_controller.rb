@@ -10,9 +10,10 @@ class UsersController < ApplicationController
     userbyusername = User.where(username: params[:username]).exists?
 
     if userbyemail || userbyusername
-      response = {user: Message.user_exist}
+      response = {user: Message.user_exists}
       status = 422
     else
+      if params[:email]
       user = User.create!(user_params)  #create! in case of an error  the exception will be handled instead of failing and returning 'false'
       auth_token = AuthenticateUser.new(user.email, user.password).call
       response = { message: Message.account_created, auth_token: auth_token }
