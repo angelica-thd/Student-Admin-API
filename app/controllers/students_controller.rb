@@ -4,11 +4,13 @@ class StudentsController < ApplicationController
       response = { message: Message.unauthorized }
     elsif Student.where(studentNumber: params[:studentNumber]).exists? 
       response = { message: Message.student_exists}
+      status = 422
     else
       @student = @current_user.students.create!(student_params)
       response = { message: Message.student_created}
+      status = :created
     end
-    json_response(response)
+    json_response(response, status)
   end
 
   def show
