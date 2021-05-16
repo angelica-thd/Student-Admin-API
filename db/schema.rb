@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210516165659) do
+ActiveRecord::Schema.define(version: 20210516180859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20210516165659) do
     t.string "academicCity"
     t.string "studentshipType"
     t.string "entryDate"
+    t.string "photoURL"
     t.index ["user_id"], name: "index_students_on_user_id"
   end
 
