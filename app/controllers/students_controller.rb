@@ -55,19 +55,16 @@ class StudentsController < ApplicationController
       :latinFname,
       :latinLname,
       :address,
-      :zipCode,
       :city,
-      :prefecture,
       :institution,
       :school,
       :department,
       :academicAddress,
-      :academicCity,
-      :academicPrefecture,
-      :academicZipCode,
+      :academicCity,    
       :studentshipType,
       :studentNumber,
-      :studentAMKA,
+      :entryDate,
+      :photoURL
     )
   end
 end
