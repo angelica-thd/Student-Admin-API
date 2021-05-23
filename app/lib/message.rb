@@ -49,6 +49,10 @@ class Message
     'Student found.'
   end
 
+  def self.student_not_found
+    'Student was not found.'
+  end
+
   def self.student_update
     'Student updated successfully.'
   end

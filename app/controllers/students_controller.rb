@@ -6,9 +6,10 @@ class StudentsController < ApplicationController
       response = { message: Message.student_exists}
       status = 422
     else
+      
       @student = @current_user.students.create!(student_params)
       response = { message: Message.student_created}
-      status = :created
+      status = :created     
     end
     json_response(response, status)
   end
@@ -17,10 +18,21 @@ class StudentsController < ApplicationController
     if @current_user.students!=[]
       response = {message: Message.unauthorized}
     else
-      student = Student.find_by!(studentNumber: params[:studentNumber])
-      response = {message:Message.student_found, student: student}
+      studentbyID = Student.where(studentNumber: params[:studentNumber]).exists?
+      studentbyToken = Student.where(srtoken: params[:srtoken]).exists?
+
+      if studentbyID 
+        response = {message:Message.student_found, student: studentbyID}
+        satus = 200    
+      elsif studentbyToken
+        response = {message:Message.student_found, student: studentbyToken}
+        satus = 200  
+      else
+        response = {message:Message.student_not_found} 
+        status = 422
+      end
     end
-    json_response(response)
+    json_response(response,status)
   end
 
   def update
