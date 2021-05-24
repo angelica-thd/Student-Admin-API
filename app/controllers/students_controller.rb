@@ -18,14 +18,11 @@ class StudentsController < ApplicationController
     if @current_user.students!=[]
       response = {message: Message.unauthorized}
     else
-      studentbyID = Student.where(studentNumber: params[:studentNumber]).exists?
-      studentbyToken = Student.where(srtoken: params[:srtoken]).exists?
-
-      if studentbyID 
-        response = {message:Message.student_found, student: studentbyID}
+      if Student.where(studentNumber: params[:identifier]).exists? 
+        response = {message:Message.student_found}
         satus = 200    
-      elsif studentbyToken
-        response = {message:Message.student_found, student: studentbyToken}
+      elsif Student.where(srtoken: params[:identifier]).exists?
+        response = {message:Message.student_found}
         satus = 200  
       else
         response = {message:Message.student_not_found} 

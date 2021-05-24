@@ -1,14 +1,15 @@
 class Student < ApplicationRecord
   belongs_to :user,class_name: "User"
   validates_presence_of :greekFname,:greekLname,:latinFname,:latinLname,:address, :studentNumber, :institution,:school, :department, :photoURL, :srtoken
-  after_initialize :init
+  before_create :assign_unique_case_number
   
-  def init
-    loop do
-      @token = SecureRandom.hex(10)
 
-      break @token unless Student.where(srtoken: @token).exists?
+  private
+  def assign_unique_case_number
+    self.srtoken = loop do
+      number =SecureRandom.hex(10)
+      break number unless Student.where(srtoken: number).exists?
     end
-    self.srtoken = @token
   end
+    
 end
