@@ -32,7 +32,7 @@ For the needs of my course of SaaS the main user is an "admin" and the secondary
   5.  put 'update'-> update User's credentials 
   6.  delete 'delete'-> delete User
   7.  post 'signup/student' -> Student signup
-  8.  post 'find/student' -> Find student by email
+  8.  post 'find/student' -> Find student by studentNumber or secureRandomToken
   9.  put 'update/student' -> Update student's information
   10. delete 'delete/student' -> Delete student
   
