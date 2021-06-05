@@ -73,7 +73,7 @@ class StudentsController < ApplicationController
       :studentshipType,
       :studentNumber,
       :entryDate,
-      :photoURL
+      :photo
     )
   end
 end
