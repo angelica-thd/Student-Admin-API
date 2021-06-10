@@ -31,7 +31,12 @@ class UsersController < ApplicationController
       username: @current_user.username,
       email: @current_user.email
     }
-    response = {message: Message.basic_update, updated_user: updated }
+    if @current_user.students!=[]
+      user = Message.basic 
+    else 
+      user = Message.student
+    end 
+    response = {message: Message.basic_update, user_type: user, updated_user: updated}
     json_response(response)
   end
 
