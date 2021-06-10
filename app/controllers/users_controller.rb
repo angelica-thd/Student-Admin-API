@@ -26,7 +26,12 @@ class UsersController < ApplicationController
 
   def update
     @current_user.update(user_params)
-    response = {message: Message.basic_update,new_credentials: @current_user }
+    updated = {
+      name: @current_user.name,
+      username: @current_user.username,
+      email: @current_user.email
+    }
+    response = {message: Message.basic_update, updated_user: updated }
     json_response(response)
   end
 
