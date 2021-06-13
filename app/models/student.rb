@@ -6,7 +6,6 @@ class Student < ApplicationRecord
   before_validation(:on => :create) do
     self.srtoken = assign_unique_case_number unless attribute_present?("srtoken")
   end
-  
 
   private
   def assign_unique_case_number(column = 'srtoken')
