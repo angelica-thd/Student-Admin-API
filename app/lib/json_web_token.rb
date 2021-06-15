@@ -9,6 +9,14 @@ class JsonWebToken
     JWT.encode(payload, HMAC_SECRET)
   end
 
+  def self.student_token(payload,exp = 2.hours.from_now)
+    # set expiry to 24 hours from creation time
+    payload[:exp] = exp.to_i
+    # sign token with application secret
+
+    JWT.encode(payload, HMAC_SECRET).split('.')[rand(0...1)]
+  end
+
   def self.decode(token)
     # get payload; first index in decoded Array
     body = JWT.decode(token, HMAC_SECRET)[0]

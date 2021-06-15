@@ -47,6 +47,13 @@ class UsersController < ApplicationController
 
   def me
     if @current_user.students!=[]
+      if @current_user.students.first.srtoken == nil
+        @current_user.students.first.srtoken = loop do
+          secure_token = JsonWebToken.student_token(payload: {studentNumber: @current_user.students.first.studentNumber, user_id: @current_user.id}) 
+          break secure_token unless Student.where(srtoken: secure_token).exists?
+        end
+      end 
+    
       response = {user: Message.student,credentials: @current_user, student_info: @current_user.students.first}
     else
       response = {user: Message.basic, credentials: @current_user}

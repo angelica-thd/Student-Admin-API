@@ -47,6 +47,7 @@ class StudentsController < ApplicationController
     if @current_user.students!=[]
       student = @current_user.students.first
       student.destroy
+      @current_user.destroy
       response = {message: Message.student_destroy}
     else
       response = {message: Message.unauthorized}
