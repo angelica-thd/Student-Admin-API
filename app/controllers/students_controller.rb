@@ -5,6 +5,7 @@ class StudentsController < ApplicationController
     elsif Student.where(studentNumber: params[:studentNumber]).exists? 
       response = { message: Message.student_exists}
       status = 422
+      @current_user.destroy
     else
       
       @student = @current_user.students.create!(student_params)
